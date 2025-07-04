@@ -38,27 +38,29 @@ class Diskon extends BaseController
 
     // Proses simpan data diskon
     public function store()
-    {
-        if (session('role') !== 'admin') {
-            return redirect()->to('/');
-        }
-
-        $validationRules = [
-            'tanggal' => 'required|is_unique[diskon.tanggal]',
-            'nominal' => 'required|numeric'
-        ];
-
-        if (!$this->validate($validationRules)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-        }
-
-        $this->diskonModel->insert([
-            'tanggal' => $this->request->getPost('tanggal'),
-            'nominal' => $this->request->getPost('nominal'),
-        ]);
-
-        return redirect()->to('/diskon')->with('success', 'Diskon berhasil ditambahkan');
+{
+    if (session('role') !== 'admin') {
+        return redirect()->to('/');
     }
+
+    $validationRules = [
+        'tanggal' => 'required|is_unique[diskon.tanggal]',
+        'nominal' => 'required|numeric'
+    ];
+
+    if (!$this->validate($validationRules)) {
+        return redirect()->back()
+            ->withInput()
+            ->with('error', 'Tanggal diskon sudah terdaftar atau nominal tidak valid.');
+    }
+
+    $this->diskonModel->insert([
+        'tanggal' => $this->request->getPost('tanggal'),
+        'nominal' => $this->request->getPost('nominal'),
+    ]);
+
+    return redirect()->to('/diskon')->with('success', 'Diskon berhasil ditambahkan');
+}
 
     // Tampilkan form edit
     public function edit($id)
