@@ -66,3 +66,42 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - json (enabled by default - don't turn it off)
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
 - [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+
+# 🛒 Aplikasi Toko Online - CodeIgniter 4
+
+Aplikasi toko online berbasis **CodeIgniter 4**, dibuat untuk memenuhi **Ujian Akhir Semester** mata kuliah **Pemrograman Web Lanjut**.  
+Aplikasi ini memungkinkan pengguna melakukan pembelian produk, serta mengelola diskon otomatis berdasarkan tanggal.  
+Disediakan juga **dashboard berbasis webservice** untuk melihat transaksi yang terjadi.
+
+---
+
+## 🚀 Fitur Aplikasi
+
+- 🔐 **Login & Multi-role**
+  - Admin & User
+- 📦 **CRUD Produk**
+  - Tambah, edit, hapus produk
+- 🗂️ **CRUD Kategori Produk**
+- 🛒 **Keranjang Belanja**
+  - Tambah, edit jumlah, hapus item
+- 💸 **Diskon Otomatis per Tanggal**
+  - Diskon aktif hanya jika tanggalnya sesuai
+- 📈 **Diskon disimpan dalam session**
+  - Digunakan saat add to cart dan checkout
+- 🧾 **Transaksi**
+  - Checkout keranjang → disimpan ke database
+  - Diskon tercatat di `detail_transaksi`
+- 🔑 **API Webservice dengan API Key**
+- 📊 **Dashboard Webservice**
+  - Menampilkan semua transaksi
+  - Ditampilkan jumlah item per transaksi
+- 🚚 **Ongkir otomatis via RajaOngkir**
+  - Menggunakan endpoint Komerce
+
+---
+
+## ⚙️ Cara Instalasi
+
+1. **Clone proyek atau download zip**, lalu buka terminal:
+```bash
+composer install

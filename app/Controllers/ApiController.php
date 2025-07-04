@@ -44,10 +44,14 @@ class ApiController extends ResourceController
     if(array_key_exists("Key", $headers)){
         if ($headers["Key"] == $this->apiKey) {
             $penjualan = $this->transaction->findAll();
-            
-            foreach ($penjualan as &$pj) {
-                $pj['details'] = $this->transaction_detail->where('transaction_id', $pj['id'])->findAll();
-            }
+
+foreach ($penjualan as &$pj) {
+    $details = $this->transaction_detail->where('transaction_id', $pj['id'])->findAll();
+
+    $pj['details'] = $details;
+    $pj['jumlah_item'] = array_sum(array_column($details, 'jumlah'));
+}
+
 
             $data['status'] = ["code" => 200, "description" => "OK"];
             $data['results'] = $penjualan;

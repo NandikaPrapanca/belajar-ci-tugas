@@ -47,3 +47,10 @@ $routes->get('keranjang', 'TransaksiController::index', ['filter' => 'auth']);
 $routes->get('faq', 'FaqController::index', ['filter' => 'auth']);
 
 $routes->resource('api', ['controller' => 'apiController']);
+
+$routes->get('diskon', 'Diskon::index');
+$routes->get('diskon/create', 'Diskon::create');
+$routes->post('diskon/store', 'Diskon::store');
+$routes->get('diskon/edit/(:num)', 'Diskon::edit/$1');
+$routes->put('diskon/update/(:num)', 'Diskon::update/$1');
+$routes->delete('diskon/(:num)', 'Diskon::delete/$1');

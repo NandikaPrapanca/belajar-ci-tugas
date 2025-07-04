@@ -20,6 +20,12 @@ class Auth implements FilterInterface
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        // Do something here
+        $today = date('Y-m-d');
+$diskonModel = new \App\Models\DiskonModel();
+$diskon = $diskonModel->where('tanggal', $today)->first();
+
+if ($diskon) {
+    session()->set('diskon_nominal', $diskon['nominal']);
+}
     }
 }

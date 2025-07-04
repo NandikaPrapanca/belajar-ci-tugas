@@ -15,6 +15,11 @@
     <button type="submit" title="Search"><i class="bi bi-search"></i></button>
   </form>
 </div><!-- End Search Bar -->
+<?php if (session()->has('diskon_nominal')): ?>
+    <div class="alert alert-success text-center">
+        Hari ini ada diskon <?= number_format(session('diskon_nominal')) ?> per item
+    </div>
+<?php endif; ?>
 
 <nav class="header-nav ms-auto">
   <ul class="d-flex align-items-center">
@@ -223,6 +228,7 @@
     </li><!-- End Profile Nav -->
 
   </ul>
+  
 </nav><!-- End Icons Navigation -->
 
 </header><!-- End Header -->
